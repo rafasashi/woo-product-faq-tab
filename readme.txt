@@ -1,16 +1,24 @@
-# WooCommerce Product FAQ Tab
+=== WooCommerce Product FAQ Tab ===
+Contributors: rafasashi
+Tags: ecommerce, e-commerce, woocommerce, FAQ, questions, answers, QnA, product tab
+Donate link: https://code.recuweb.com/download/woocommerce-product-faq-tab/
+Requires at least: 4.6
+Tested up to: 4.9.6
+Stable tag: 3.0.0
+License: GPLv3
+License URI: https://code.recuweb.com/product-licenses/
 
 Allows you to display Frequently Asked Questions (FAQ) about the product in a new tab on the single product page.
 
-## Description
+== Description ==
 
-Extends WooCommerce to allow you to display all images attached to a product in a new tab on the single product page.
+Extends WooCommerce to allow you to display Frequently Asked Questions (FAQ) about the product in a new tab on the single product page.
 
-### Free Features
+= Free Features =
 
 - ADD FAQ TAB – add a new tab to the product page to display the Frequently Asked Questions about the product and their Answers.
 
-### Premium Features
+= Premium Features =
  
 - TAB SETTINGS – Manage the tab settings from the Woocommerce settings and select the tab name, enable the accordion, or select the text and background color for example.
 - RENAME THE TAB – Don’t keep the tab name “FAQs” and rename the tab to anything you want like “Q&A” or “Support”.
@@ -22,27 +30,29 @@ Extends WooCommerce to allow you to display all images attached to a product in 
 - TAB POSITION – Change the position of the Tab name in the frontend.
 - SHOW EMPTY – Show empty Tab, recommended if the question form is enabled.
 
-## Localization
+More information about [WooCommerce Product FAQ Tab](https://code.recuweb.com/download/woocommerce-product-faq-tab/)
+
+= Localization =
 
 * English
 
-## Documentation
+= Documentation =
 
-For all documentation on this plugin go to: https://code.recuweb.com/download/woocommerce-product-faq-tab/
+For all documentation on this plugin go to: [https://code.recuweb.com/download/woocommerce-product-faq-tab/](https://code.recuweb.com/download/woocommerce-product-faq-tab/)
 
-## Installation
+== Installation ==
 
-### Minimum Requirements
+= Minimum Requirements =
 
 * WooCommerce 2.0 or higher.
 
-### Automatic installation
+= Automatic installation =
 
 Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of WooCommerce Product FAQ Tab, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
 
 In the search field type "WooCommerce Product FAQ Tab" and click Search Plugins. Once you've found my plugin extension you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you're sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
 
-### Manual installation
+= Manual installation =
 
 The manual installation method involves downloading my plugin and uploading it to your webserver via your favourite FTP application.
 
@@ -50,17 +60,17 @@ The manual installation method involves downloading my plugin and uploading it t
 2. Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation's wp-content/plugins/ directory.
 3. Activate the plugin from the Plugins menu within the WordPress admin.
 
-### Upgrading
+= Upgrading =
 
 Automatic updates should work like a charm; as always though, ensure you backup your site just in case.
 
-### Screenshots
+== Screenshots ==
 
 1. Add a new tab to the product page to display all the Frequently asked questions about a product.
 2. Add Questions and Answers from the Edit product page in the backend.
 
-### Changelog
+== Changelog ==
 
-#### 3.0.0 - 20/5/2018
+= 3.0.0 - 20/5/2018 =
 
 * Publicaly Released.

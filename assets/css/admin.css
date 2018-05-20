@@ -1,0 +1,44 @@
+.options_group .sortable .ui-sortable { list-style-type: none; margin: 0; padding: 0; }
+.options_group .sortable .ui-sortable li {
+	margin: 0;
+    padding: 10px;
+    font-size: 13px;
+    cursor: move;
+    opacity: 1;
+    background: none;
+    border-top: 1px solid #eee;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+}
+.options_group .sortable .ui-state-disabled { cursor: initial !important; }
+.options_group .add-input-group{
+    color: #555;
+    border-color: #ccc;
+    background: #f7f7f7;
+    box-shadow: 0 1px 0 #ccc;
+    vertical-align: top;
+    padding: 5px 10px;
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.options_group .remove-input-group {
+    color: #555;
+    border-color: #ccc;
+    background: #f7f7f7;
+    box-shadow: 0 1px 0 #ccc;
+    vertical-align: top;
+    padding: 4px 10px;
+    margin: 0 10px;
+    font-size: 11px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.options_group .add-input-group:hover, .options_group .remove-input-group:hover{
+    background: #ececec;
+}
+.options_group .add-input-group:active, .options_group .remove-input-group:active{
+    background: #e6e6e6;
+}
