@@ -7,7 +7,7 @@
  * Author: Rafasashi
  * Author URI: https://code.recuweb.com/about-us/
  * Requires at least: 4.6
- * Tested up to: 4.9.5
+ * Tested up to: 4.9.6
  *
  * Text Domain: wc_faq
  * Domain Path: /lang/
