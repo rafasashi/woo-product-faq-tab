@@ -260,7 +260,7 @@ class WooCommerce_Product_FAQ_Tab_Admin_API {
 										$html .= '<div class="wp-media-buttons" style="display: contents;"><button type="button" class="button insert-media add_media" data-editor="'.$field['id'].'-content-'.$e.'"><span class="wp-media-buttons-icon"></span> Add Media</button></div>';
 									}
 									
-									$html .= '<textarea'.( $e > 0 ? ' id="'.$field['id'].'-content-'.$e.'"' : '' ).' class="'.( ( $e > 0  && $this->parent->license->is_valid() ) ? 'rich-text' : '' ).'" placeholder="Answer" name="'.$option_name.'[answer][]" style="width:100%;height:150px;">' . $answer . '</textarea>';
+									$html .= '<textarea'.( $e > 0 ? ' id="'.$field['id'].'-content-'.$e.'"' : '' ).' class="'.( ( $e > 0  && $this->parent->license->is_valid() ) ? 'wfaq-rich-text' : '' ).'" placeholder="Answer" name="'.$option_name.'[answer][]" style="width:100%;height:150px;">' . $answer . '</textarea>';
 
 								$html .= '</div>';
 

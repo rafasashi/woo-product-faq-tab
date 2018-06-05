@@ -148,7 +148,7 @@ class WooCommerce_Product_FAQ_Tab {
 			// get premium options
 			
 			$this->title 		= get_option('wfaq_tab_title','FAQs');
-			$this->priority 	= get_option('wfaq_tab_priority',20);
+			$this->priority 	= intval( get_option('wfaq_tab_priority',20) );
 			$this->accordion 	= get_option('wfaq_enable_accordion','yes');
 			$this->form 		= get_option('wfaq_enable_contact_form','yes');
 			$this->showEmpty 	= get_option('wfaq_show_empty','yes');		

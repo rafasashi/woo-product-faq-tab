@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Product FAQ Tab
  * Plugin URI: https://code.recuweb.com/download/woocommerce-product-faq-tab/
  * Description: Extends WooCommerce to allow you to display all images attached to a product in a new tab on the single product page.
- * Version: 3.0.0
+ * Version: 3.0.2
  * Author: Rafasashi
  * Author URI: https://code.recuweb.com/about-us/
  * Requires at least: 4.6
@@ -54,7 +54,7 @@
 	 */
 	function WooCommerce_Product_FAQ_Tab() {
 				
-		$instance = WooCommerce_Product_FAQ_Tab::instance( __FILE__, '1.0.2' );	
+		$instance = WooCommerce_Product_FAQ_Tab::instance( __FILE__, '1.0.3' );	
 		
 		if ( is_null( $instance->notices ) ) {
 			
