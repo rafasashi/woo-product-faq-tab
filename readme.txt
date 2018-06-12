@@ -4,7 +4,7 @@ Tags: ecommerce, e-commerce, woocommerce, FAQ, questions, answers, QnA, product 
 Donate link: https://code.recuweb.com/download/woocommerce-product-faq-tab/
 Requires at least: 4.6
 Tested up to: 4.9.6
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 License: GPLv3
 License URI: https://code.recuweb.com/product-licenses/
 
@@ -71,11 +71,11 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
-= 3.0.2 - 05/6/2018 =
+= 3.0.3 - 05/6/2018 =
 
 * TinyMCE fixed
 
-= 3.0.1 - 04/6/2018 =
+= 3.0.2 - 04/6/2018 =
 
 * Tab position fixed
 

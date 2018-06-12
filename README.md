@@ -61,11 +61,11 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 ### Changelog
 
-#### 3.0.2 - 05/6/2018
+#### 3.0.3 - 05/6/2018
 
 * TinyMCE fixed
 
-#### 3.0.1 - 04/6/2018
+#### 3.0.2 - 04/6/2018
 
 * Tab position fixed
 

@@ -220,21 +220,21 @@ class WooCommerce_Product_FAQ_Tab_Admin_API {
 					$data = $arr;
 				}
 				
-				$html .= '<div id="'.$field['id'].'" class="sortable">';
+				$html .= '<div id="'.$field['id'].'" class="'. ( $this->parent->license->is_valid() ? 'sortable' : 'unsortable').'">';
 					
-					$html .= ' <a href="#" class="add-input-group" data-target="'.$field['id'].'-row" style="line-height:40px;">Add question</a>';
+					$html .= ' <a href="#" class="wfaq-add-input-group" data-target="'.$field['id'].'-row" style="line-height:40px;">Add question</a>';
 				
-					$html .= '<ul class="input-group ui-sortable">';
+					$html .= '<ul class="input-group'. ( $this->parent->license->is_valid() ? ' ui-sortable' : ' ui-unsortable').'">';
 						
 						foreach( $data['question'] as $e => $question) {
 
 							if( $e > 0 && $this->parent->license->is_valid() ){
 								
-								$class='input-group-row ui-state-default ui-sortable-handle';
+								$class='input-group-row'. ( $this->parent->license->is_valid() ? ' ui-state-default ui-sortable-handle' : '');
 							}
 							else{
 								
-								$class='input-group-row ui-state-default ui-state-disabled';
+								$class='input-group-row'. ( $this->parent->license->is_valid() ? ' ui-state-default ui-state-disabled' : '');
 							}
 						
 							$answer = str_replace('\\\'','\'',$data['answer'][$e]);
