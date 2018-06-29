@@ -77,15 +77,13 @@
 	}
 	else{
 		
-		add_action('admin_notices', 'wc_images_tab_error_notice');
-		
-		function wc_images_tab_error_notice(){
+		add_action('admin_notices', function(){
 			
 			global $current_screen;
 			
-			if($current_screen->parent_base == 'plugins'){
+			if( $current_screen->parent_base == 'plugins' ){
 				
-				echo '<div class="error"><p>WooCommerce Product FAQ Tab '.__('requires <a href="http://www.woothemes.com/woocommerce/" target="_blank">WooCommerce</a> to be activated in order to work. Please install and activate <a href="'.admin_url('plugin-install.php?tab=search&type=term&s=WooCommerce').'" target="_blank">WooCommerce</a> first.', 'wc_faq').'</p></div>';
+				echo '<div class="error"><p>WooCommerce Product FAQ Tab '.__('requires <a href="http://www.woothemes.com/woocommerce/" target="_blank">WooCommerce</a> to be activated in order to work. Please install and activate <a href="'.admin_url('plugin-install.php?tab=search&type=term&s=WooCommerce').'" target="_blank">WooCommerce</a> first.', 'wc_book_chapter').'</p></div>';
 			}
-		}
+		});
 	}
