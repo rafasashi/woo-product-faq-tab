@@ -5,7 +5,9 @@
 .wfaq-accordion {
     margin: 0;
     padding:10px;
-    height:20px;
+    line-height:20px;
+	min-height: 20px;
+	display:block;
     text-decoration:none;
     text-transform:uppercase;
     font-size: 15px;

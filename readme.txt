@@ -3,8 +3,8 @@ Contributors: rafasashi
 Tags: ecommerce, e-commerce, woocommerce, FAQ, questions, answers, QnA, product tab
 Donate link: https://code.recuweb.com/download/woocommerce-product-faq-tab/
 Requires at least: 4.6
-Tested up to: 4.9.6
-Stable tag: 3.0.3
+Tested up to: 4.9.8
+Stable tag: 3.0.4
 License: GPLv3
 License URI: https://code.recuweb.com/product-licenses/
 
@@ -70,6 +70,14 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 2. Add Questions and Answers from the Edit product page in the backend.
 
 == Changelog ==
+
+= 3.0.5 - 06/8/2018 =
+
+* Premium ID fixed
+
+= 3.0.4 - 05/8/2018 =
+
+* CSS accordion fixed
 
 = 3.0.3 - 05/6/2018 =
 

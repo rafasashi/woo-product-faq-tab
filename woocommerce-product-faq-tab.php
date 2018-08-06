@@ -3,13 +3,13 @@
  * Plugin Name: WooCommerce Product FAQ Tab
  * Plugin URI: https://code.recuweb.com/download/woocommerce-product-faq-tab/
  * Description: Extends WooCommerce to allow you to display all images attached to a product in a new tab on the single product page.
- * Version: 3.0.3
+ * Version: 3.0.5
  * Author: Rafasashi
  * Author URI: https://code.recuweb.com/about-us/
  * Requires at least: 4.6
- * Tested up to: 4.9.6
+ * Tested up to: 4.9.8
  *
- * Text Domain: wc_faq
+ * Text Domain: wc-faq
  * Domain Path: /lang/
  * 
  * Copyright: © 2018 Recuweb.
@@ -34,6 +34,10 @@
 	if(!defined('RW_SERVER_URL')){
 		define('RW_SERVER_URL', 'https://code.recuweb.com');
 	}
+	
+	if(!defined('WFAQ_PRODUCT_ID')){
+		define('WFAQ_PRODUCT_ID', '5701');
+	}	
 
 	// Load plugin class files
 	require_once( 'includes/class-woocommerce-product-faq-tab.php' );
@@ -83,7 +87,7 @@
 			
 			if( $current_screen->parent_base == 'plugins' ){
 				
-				echo '<div class="error"><p>WooCommerce Product FAQ Tab '.__('requires <a href="http://www.woothemes.com/woocommerce/" target="_blank">WooCommerce</a> to be activated in order to work. Please install and activate <a href="'.admin_url('plugin-install.php?tab=search&type=term&s=WooCommerce').'" target="_blank">WooCommerce</a> first.', 'wc_book_chapter').'</p></div>';
+				echo '<div class="error"><p>WooCommerce Product FAQ Tab '.__('requires <a href="http://www.woothemes.com/woocommerce/" target="_blank">WooCommerce</a> to be activated in order to work. Please install and activate <a href="'.admin_url('plugin-install.php?tab=search&type=term&s=WooCommerce').'" target="_blank">WooCommerce</a> first.', 'wc-faq').'</p></div>';
 			}
 		});
 	}

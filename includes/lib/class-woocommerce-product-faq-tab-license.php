@@ -141,6 +141,7 @@
 					'license_key'		=> $license_key,
 					'registered_domain' => $_SERVER['SERVER_NAME'],
 					'item_reference' 	=> urlencode($plugin_data['Name']),
+					'item_id' 			=> WFAQ_PRODUCT_ID,
 				);
 
 				// Send query to the license manager server
@@ -205,6 +206,7 @@
 					'license_key' 		=> $license_key,
 					'registered_domain' => $_SERVER['SERVER_NAME'],
 					'item_reference' 	=> urlencode($plugin_data['Name']),
+					'item_id' 			=> WFAQ_PRODUCT_ID,
 				);
 
 				// Send query to the license manager server
