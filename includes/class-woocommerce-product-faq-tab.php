@@ -348,9 +348,9 @@ class WooCommerce_Product_FAQ_Tab {
 			$subject = 'Question about: ' . $title;
 			
 			$body  = $subject .PHP_EOL ;
+			$body .= 'From: (' . $email . ')' .PHP_EOL ;
 			$body .= '__________________' . PHP_EOL . PHP_EOL ;
 			$body .= $question . PHP_EOL ;
-			
 			
 			$headers 	= array(
 				
@@ -533,82 +533,82 @@ class WooCommerce_Product_FAQ_Tab {
 		if( $this->showEmpty == 'yes' || $countItems > 0  ){
 			
 			echo '<h2>' . __($this->title, 'wc_faq') . '</h2>';
+		
+			if( $this->form == 'yes' && $countItems > 0 ){
 			
-			echo '<div id="wfaq_items">';
-				
-				if( $this->form == 'yes' && $countItems > 0 ){
-				
-					echo '<a href="#ask-a-question" class="button wfaq-button" style="float:right;margin:0px 0 20px 0px;">Ask question</a>';
-				}
-				
+				echo '<a href="#ask-a-question" class="button wfaq-button" style="float:right;margin:0px 0 20px 0px;">Ask question</a>';
+			}
+		
+			echo '<div id="wfaq_items" class="wfaq-accordion">';
+
 				$i=1;
 				
 				foreach( $faqs as $question => $answer ){
 					
-					echo '<h3 id="wfaq-section-'.$i.'" class="wfaq-accordion wfaq-question">' . $question . '<span></span></h3>';
+					echo '<h3 id="wfaq-section-'.$i.'" class="wfaq-question">' . $question . '<span></span></h3>';
 				
 					echo '<div class="wfaq-answer">' . $answer . '</div>';
 					
 					++$i;
 				}
 				
-				if( $this->form == 'yes' ){
-					
-					echo'<div id="review_form_wrapper">';
-						echo'<div id="review_form">';
-							echo'<div id="respond" class="comment-respond">';
+			echo '</div>';
+			
+			if( $this->form == 'yes' ){
+				
+				echo'<div id="review_form_wrapper">';
+					echo'<div id="review_form">';
+						echo'<div id="respond" class="comment-respond">';
+							
+							echo'<form id="ask-a-question" action="" method="post">';
 								
-								echo'<form id="ask-a-question" action="" method="post">';
+								echo'<h3 id="reply-title" class="comment-reply-title">'.__('Ask a question', 'wc_faq').'</h3>';
+								
+								echo'<p class="form-email">';	
+								
+									echo'<label for="email" style="display:block;">'.__('Your email', 'wc_faq').'</label>';
 									
-									echo'<h3 id="reply-title" class="comment-reply-title">'.__('Ask a question', 'wc_faq').'</h3>';
+									$this->admin->display_field( array(
 									
-									echo'<p class="form-email">';	
-									
-										echo'<label for="email" style="display:block;">'.__('Your email', 'wc_faq').'</label>';
+										'type'				=> 'text',
+										'id'				=> 'wfaq-email',
+										'name'				=> 'wfaq-email',
+										'placeholder'		=> __('Email', 'wc_faq'),
+										'description'		=> '',
 										
-										$this->admin->display_field( array(
+									), false );
+								
+								echo'</p>';
+								
+								echo'<p class="form-question">';	
+								
+									echo'<label for="question">'.__('Your question', 'wc_faq').'</label>';
+								
+									$this->admin->display_field( array(
+									
+										'type'				=> 'textarea',
+										'id'				=> 'wfaq-question',
+										'name'				=> 'wfaq-question',
+										'placeholder'		=> __('Question', 'wc_faq'),
+										'description'		=> '',
 										
-											'type'				=> 'text',
-											'id'				=> 'wfaq-email',
-											'name'				=> 'wfaq-email',
-											'placeholder'		=> __('Email', 'wc_faq'),
-											'description'		=> '',
-											
-										), false );
-									
-									echo'</p>';
-									
-									echo'<p class="form-question">';	
-									
-										echo'<label for="question">'.__('Your question', 'wc_faq').'</label>';
-									
-										$this->admin->display_field( array(
-										
-											'type'				=> 'textarea',
-											'id'				=> 'wfaq-question',
-											'name'				=> 'wfaq-question',
-											'placeholder'		=> __('Question', 'wc_faq'),
-											'description'		=> '',
-											
-										), false );
-									
-									echo'</p>';
+									), false );
+								
+								echo'</p>';
 
-									echo'<p class="form-submit">';							
-									
-										echo'<input name="wfaq-submit" type="submit" id="submit" class="submit" value="Submit">';
-										echo'<input type="hidden" name="wfaq-title" value="' . urlencode($post->post_title) . '">';
-									
-									echo'</p>';
-									
-								echo'</form>';
+								echo'<p class="form-submit">';							
 								
-							echo'</div>';
+									echo'<input name="wfaq-submit" type="submit" id="submit" class="submit" value="Submit">';
+									echo'<input type="hidden" name="wfaq-title" value="' . urlencode($post->post_title) . '">';
+								
+								echo'</p>';
+								
+							echo'</form>';
+							
 						echo'</div>';
 					echo'</div>';
-				}
-				
-			echo '</div>';
+				echo'</div>';
+			}
 		}
 	}
 
@@ -653,24 +653,62 @@ class WooCommerce_Product_FAQ_Tab {
 	 * @return void
 	 */
 	public function enqueue_styles () {
-		
-		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'css/frontend-1.0.1.css', array(), $this->_version );
-		wp_enqueue_style( $this->_token . '-frontend' );		
-		
+
 		if( $this->license->is_valid() ){
 		
 			wp_register_style( $this->_token . '-custom-style', false );
 			wp_enqueue_style( $this->_token . '-custom-style' );
 			wp_add_inline_style( $this->_token . '-custom-style', '
+				
 				.wfaq-accordion {
-					border-top: '.get_option('wfaq_bd_top_color','#f0f0f0').' 1px solid;
+					display:inline-block;
+					width:100%;
+				}
+				.wfaq-accordion h3 {
+					margin: 0;
+					padding:10px;
+					line-height:20px;
+					min-height: 20px;
+					display:block;
+					text-decoration:none;
+					text-transform:uppercase;
+					font-size: 15px;
+					font-weight:bold;
+					border: '.get_option('wfaq_bd_top_color','#f0f0f0').' 1px solid;
 					background: '.( $this->accordion == 'yes' ? get_option('wfaq_head_bkg_color','#ccc') : get_option('wfaq_op_head_bkg_color','#000') ).';
 					color: '.( $this->accordion == 'yes' ? get_option('wfaq_head_txt_color','#000') : get_option('wfaq_op_head_txt_color','#fff') ).';
-				}			
-				.accordion-open {
+				}
+				.wfaq-answer {
+					border: none !important;
+					display: block; 
+					margin: 5px !important;
+					line-height: 25px !important;
+				}				
+				.wfaq-accordion .accordion-open span {
+					display:block;
+					float:right;
+					padding:10px;
+				}				
+				.wfaq-accordion .accordion-open {
 					background: '.get_option('wfaq_op_head_bkg_color','#000').';
 					color: '.get_option('wfaq_op_head_txt_color','#fff').';
 				}
+				.wfaq-accordion .accordion-open span {
+					display:block;
+					float:right;
+					padding:10px;
+				}
+				/*
+				.wfaq-accordion .accordion-open span {
+					background:url(../images/minus.png) center center no-repeat;
+				}
+				.wfaq-accordion .accordion-close span {
+					display:block;
+					float:right;
+					background:url(../images/plus.png) center center no-repeat;
+					padding:10px;
+				}
+				*/
 			');
 		}
 		
@@ -686,11 +724,32 @@ class WooCommerce_Product_FAQ_Tab {
 		
 		if( $this->accordion == 'yes' ){
 		
-			wp_register_script( $this->_token . '-jquery-accordion', esc_url( $this->assets_url ) . 'js/jquery.accordion.js', array( 'jquery' ), $this->_version );
-			wp_enqueue_script( $this->_token . '-jquery-accordion' );			
+			wp_register_script( 'rew-jquery-accordion', esc_url( $this->assets_url ) . 'js/jquery.accordion.js', array( 'jquery' ), $this->_version );
+			wp_enqueue_script( 'rew-jquery-accordion' );			
 			
-			wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'js/frontend.js', array( 'jquery' ), $this->_version );
-			wp_enqueue_script( $this->_token . '-frontend' );	
+			wp_register_script($this->_token . '-accordion', '', array('jquery','rew-jquery-accordion') );
+			
+			wp_enqueue_script($this->_token . '-accordion');
+		
+			wp_add_inline_script($this->_token . '-accordion', '
+			
+				;(function($){
+
+					$(document).ready(function(){
+						
+						if( $(\'.wfaq-accordion\').length ){
+					
+							$(\'.wfaq-accordion\').accordion({
+								
+									defaultOpen: \'wfaq-sections-1\',
+									heightStyle: \'content\'
+								});
+						}
+					});
+						
+				})(jQuery);
+			
+			');
 		}
 		
 	} // End enqueue_scripts ()
