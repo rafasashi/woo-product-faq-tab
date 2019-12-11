@@ -95,11 +95,7 @@ class WooCommerce_Product_FAQ_Tab_Settings {
 	public function add_menu_items () {
 		
 		//add menu in wordpress dashboard
-		
-		if( $this->parent->license->is_valid() ){
-			
 
-		}
 	}
 
 	/**
@@ -139,43 +135,11 @@ class WooCommerce_Product_FAQ_Tab_Settings {
 	 */
 	private function settings_fields () {
 		
-		if( $this->parent->license->is_valid() ){
-			
-			$settings['license'] = array(
-				'title'					=> __( 'License', 'woocommerce-product-faq-tab' ),
-				'description'			=> __( '', 'woocommerce-product-faq-tab' ),
-				'fields'				=> array(
-					array(
-						'label'			=> 'License Key',
-						'id'			=> 'license_key',
-						'type'			=> 'license',
-						'description'	=> '',
-					)
-				),
-				'submit' => false,
-			);
-		}
-		else{
-			
-			$settings['license'] = array(
-				'title'					=> __( 'Activate License', 'woocommerce-product-faq-tab' ),
-				'description'			=> __( 'Please enter the license key for this product to activate it. You were given a license key when you purchased this item.', 'woocommerce-product-faq-tab' ),
-				'fields'				=> array(
-					array(
-						'label'			=> 'License Key',
-						'id'			=> 'license_key',
-						'type'			=> 'license',
-						'description'	=> '',
-					)
-				),
-				'submit' => false,
-			);			
-		}
-
-
+		/*
 		$settings = apply_filters( $this->parent->_token . '_settings_fields', $settings );
 
 		return $settings;
+		*/
 	}
 
 	/**

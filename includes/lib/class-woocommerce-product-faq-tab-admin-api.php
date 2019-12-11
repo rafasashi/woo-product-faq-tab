@@ -173,36 +173,10 @@ class WooCommerce_Product_FAQ_Tab_Admin_API {
 			    <?php
 			break;
 			
-			case 'license':
-				
-				if( !empty($data) ){
-				
-					$is_valid = $this->parent->license->is_valid();
-				}
-				else{
-					
-					$is_valid = false;
-				}
-			
-				echo '<input class="regular-text" type="text" id="' . esc_attr( $option_name ) . '" name="' . esc_attr( $option_name ) . '"  value="' . $data . '" ' . ( $is_valid ? 'disabled' : '') . '>';
-				echo '<p class="submit">';
-								
-					if( !$is_valid ){
-						
-						echo '<input type="submit" name="activate_license" value="Activate" class="button-primary" />';
-					}
-					else{
-						
-						echo '<input type="hidden" name="' . esc_attr( $option_name ) . '" value="'.$data.'" />';
-						echo '<input type="submit" name="deactivate_license" value="Deactivate" class="button" />';
-					}
-					
-				echo '</p>';				
-					 
-			break;
-			
 			case 'question_answer':
-			
+				
+				$is_valid = true;
+				
 				if( !isset($data['question'][0]) || !isset($data['answer'][0]) || !empty($data['question'][0]) || !empty($data['answer'][0]) ){
 					
 					$arr = ['question' => [ 0 => '' ], 'answer' => [ 0 => '' ]];
@@ -220,28 +194,28 @@ class WooCommerce_Product_FAQ_Tab_Admin_API {
 					$data = $arr;
 				}
 				
-				$html .= '<div id="'.$field['id'].'" class="'. ( $this->parent->license->is_valid() ? 'sortable' : 'unsortable').'">';
+				$html .= '<div id="'.$field['id'].'" class="'. ( $is_valid ? 'sortable' : 'unsortable').'">';
 					
 					$html .= ' <a href="#" class="wfaq-add-input-group" data-target="'.$field['id'].'-row" style="line-height:40px;">Add question</a>';
 				
-					$html .= '<ul class="input-group'. ( $this->parent->license->is_valid() ? ' ui-sortable' : ' ui-unsortable').'">';
+					$html .= '<ul class="input-group'. ( $is_valid ? ' ui-sortable' : ' ui-unsortable').'">';
 						
 						foreach( $data['question'] as $e => $question) {
 
-							if( $e > 0 && $this->parent->license->is_valid() ){
+							if( $e > 0 && $is_valid ){
 								
-								$class='input-group-row'. ( $this->parent->license->is_valid() ? ' ui-state-default ui-sortable-handle' : '');
+								$class='input-group-row'. ( $is_valid ? ' ui-state-default ui-sortable-handle' : '');
 							}
 							else{
 								
-								$class='input-group-row'. ( $this->parent->license->is_valid() ? ' ui-state-default ui-state-disabled' : '');
+								$class='input-group-row'. ( $is_valid ? ' ui-state-default ui-state-disabled' : '');
 							}
 						
 							$answer = str_replace('\\\'','\'',$data['answer'][$e]);
 									
 							$html .= '<li class="'.$class.' '.$field['id'].'-row" style="display:'.( $e == 0 ? 'none' : 'inline-block' ).';width:97%;background: rgb(255, 255, 255);">';
 						
-								$html .= '<div style="width:100%;display:inline-block;'.( $this->parent->license->is_valid() ? 'background-image: url(' . $this->parent->assets_url . 'images/dnd-icon.png?3);background-position-y:5px;background-position-x:right;background-repeat: no-repeat;background-color: transparent;' : '' ).'">';
+								$html .= '<div style="width:100%;display:inline-block;'.( $is_valid ? 'background-image: url(' . $this->parent->assets_url . 'images/dnd-icon.png?3);background-position-y:5px;background-position-x:right;background-repeat: no-repeat;background-color: transparent;' : '' ).'">';
 						
 									$html .= '<input type="text" placeholder="Question" style="width:80%;margin-bottom:5px;" name="'.$option_name.'[question][]" value="'.$data['question'][$e].'">';
 									
@@ -255,12 +229,12 @@ class WooCommerce_Product_FAQ_Tab_Admin_API {
 								
 								$html .= '<div style="width:100%;">';
 									
-									if( $e > 0 && $this->parent->license->is_valid() ){
+									if( $e > 0 && $is_valid ){
 									
 										$html .= '<div class="wp-media-buttons" style="display: contents;"><button type="button" class="button insert-media add_media" data-editor="'.$field['id'].'-content-'.$e.'"><span class="wp-media-buttons-icon"></span> Add Media</button></div>';
 									}
 									
-									$html .= '<textarea'.( $e > 0 ? ' id="'.$field['id'].'-content-'.$e.'"' : '' ).' class="'.( ( $e > 0  && $this->parent->license->is_valid() ) ? 'wfaq-rich-text' : '' ).'" placeholder="Answer" name="'.$option_name.'[answer][]" style="width:100%;height:150px;">' . $answer . '</textarea>';
+									$html .= '<textarea'.( $e > 0 ? ' id="'.$field['id'].'-content-'.$e.'"' : '' ).' class="'.( ( $e > 0  && $is_valid ) ? 'wfaq-rich-text' : '' ).'" placeholder="Answer" name="'.$option_name.'[answer][]" style="width:100%;height:150px;">' . $answer . '</textarea>';
 
 								$html .= '</div>';
 

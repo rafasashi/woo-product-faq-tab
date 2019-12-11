@@ -4,7 +4,7 @@ Tags: ecommerce, e-commerce, woocommerce, FAQ, questions, answers, QnA, product 
 Donate link: https://code.recuweb.com/download/woocommerce-product-faq-tab/
 Requires at least: 4.6
 Tested up to: 5.3
-Stable tag: 3.0.7
+Stable tag: 3.0.8
 License: GPLv3
 License URI: https://code.recuweb.com/product-licenses/
 
@@ -16,10 +16,7 @@ Extends WooCommerce to allow you to display Frequently Asked Questions (FAQ) abo
 
 = Free Features =
 
-- ADD FAQ TAB – add a new tab to the product page to display the Frequently Asked Questions about the product and their Answers.
-
-= Premium Features =
- 
+- ADD FAQ TAB – add a new tab to the product page to display the Frequently Asked Questions about the product and their Answers. 
 - TAB SETTINGS – Manage the tab settings from the Woocommerce settings and select the tab name, enable the accordion, or select the text and background color for example.
 - RENAME THE TAB – Don’t keep the tab name “FAQs” and rename the tab to anything you want like “Q&A” or “Support”.
 - FAQ ACCORDION – Show the questions and answers in a dynamic accordion.  It works on all modern browsers.
@@ -29,6 +26,10 @@ Extends WooCommerce to allow you to display Frequently Asked Questions (FAQ) abo
 - TAB STYLING – Change the text and background colors of the blocks.
 - TAB POSITION – Change the position of the Tab name in the frontend.
 - SHOW EMPTY – Show empty Tab, recommended if the question form is enabled.
+
+= Premium Features =
+
+- REMOVE ADS - Remove the "Code Market" premium panel in the admin sidebar
 
 More information about [WooCommerce Product FAQ Tab](https://code.recuweb.com/download/woocommerce-product-faq-tab/)
 

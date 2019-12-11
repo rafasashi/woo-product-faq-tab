@@ -20,7 +20,7 @@ class WooCommerce_Product_FAQ_Tab {
 	 * @access  public
 	 * @since   1.0.0
 	 */
-	public $license = null;
+
 	public $notices = null;
 	public $settings = null;
 
@@ -140,19 +140,14 @@ class WooCommerce_Product_FAQ_Tab {
 		// Load API for generic admin functions
 		
 		$this->admin = new WooCommerce_Product_FAQ_Tab_Admin_API($this);
-		
-		$this->license = new WooCommerce_Product_FAQ_Tab_License($this);
-		
-		if( $this->license->is_valid() ){
 
-			// get premium options
-			
-			$this->title 		= get_option('wfaq_tab_title','FAQs');
-			$this->priority 	= intval( get_option('wfaq_tab_priority',20) );
-			$this->accordion 	= get_option('wfaq_enable_accordion','yes');
-			$this->form 		= get_option('wfaq_enable_contact_form','yes');
-			$this->showEmpty 	= get_option('wfaq_show_empty','yes');		
-		}
+		// get premium options
+		
+		$this->title 		= get_option('wfaq_tab_title','FAQs');
+		$this->priority 	= intval( get_option('wfaq_tab_priority',20) );
+		$this->accordion 	= get_option('wfaq_enable_accordion','yes');
+		$this->form 		= get_option('wfaq_enable_contact_form','yes');
+		$this->showEmpty 	= get_option('wfaq_show_empty','yes');		
 
 		/* Localisation */
 		
@@ -269,13 +264,10 @@ class WooCommerce_Product_FAQ_Tab {
 			
 			add_filter('plugin_row_meta', array($this, 'add_support_link'), 10, 2);
 			
-			if( $this->license->is_valid() ){
+			// Settings
 			
-				// Settings
-			
-				add_action('woocommerce_settings_catalog_options_after', array($this, 'faq_admin_settings'));
-				add_action('woocommerce_update_options', array($this, 'save_faq_admin_settings'));			
-			}
+			add_action('woocommerce_settings_catalog_options_after', array($this, 'faq_admin_settings'));
+			add_action('woocommerce_update_options', array($this, 'save_faq_admin_settings'));			
 			
 			// Product options
 			
@@ -303,11 +295,6 @@ class WooCommerce_Product_FAQ_Tab {
 			if( !empty($_POST) && !empty($_POST['wfaq-submit']) ){
 				
 				$this->handle_question_request();
-			}
-			
-			if( $this->license->is_valid() ){
-				
-	
 			}
 		}
 		else{		
@@ -654,64 +641,61 @@ class WooCommerce_Product_FAQ_Tab {
 	 */
 	public function enqueue_styles () {
 
-		if( $this->license->is_valid() ){
-		
-			wp_register_style( $this->_token . '-custom-style', false );
-			wp_enqueue_style( $this->_token . '-custom-style' );
-			wp_add_inline_style( $this->_token . '-custom-style', '
-				
-				.wfaq-accordion {
-					display:inline-block;
-					width:100%;
-				}
-				.wfaq-accordion h3 {
-					margin: 0;
-					padding:10px;
-					line-height:20px;
-					min-height: 20px;
-					display:block;
-					text-decoration:none;
-					text-transform:uppercase;
-					font-size: 15px;
-					font-weight:bold;
-					border: '.get_option('wfaq_bd_top_color','#f0f0f0').' 1px solid;
-					background: '.( $this->accordion == 'yes' ? get_option('wfaq_head_bkg_color','#ccc') : get_option('wfaq_op_head_bkg_color','#000') ).';
-					color: '.( $this->accordion == 'yes' ? get_option('wfaq_head_txt_color','#000') : get_option('wfaq_op_head_txt_color','#fff') ).';
-				}
-				.wfaq-answer {
-					border: none !important;
-					display: block; 
-					margin: 5px !important;
-					line-height: 25px !important;
-				}				
-				.wfaq-accordion .accordion-open span {
-					display:block;
-					float:right;
-					padding:10px;
-				}				
-				.wfaq-accordion .accordion-open {
-					background: '.get_option('wfaq_op_head_bkg_color','#000').';
-					color: '.get_option('wfaq_op_head_txt_color','#fff').';
-				}
-				.wfaq-accordion .accordion-open span {
-					display:block;
-					float:right;
-					padding:10px;
-				}
-				/*
-				.wfaq-accordion .accordion-open span {
-					background:url(../images/minus.png) center center no-repeat;
-				}
-				.wfaq-accordion .accordion-close span {
-					display:block;
-					float:right;
-					background:url(../images/plus.png) center center no-repeat;
-					padding:10px;
-				}
-				*/
-			');
-		}
-		
+		wp_register_style( $this->_token . '-custom-style', false );
+		wp_enqueue_style( $this->_token . '-custom-style' );
+		wp_add_inline_style( $this->_token . '-custom-style', '
+			
+			.wfaq-accordion {
+				display:inline-block;
+				width:100%;
+			}
+			.wfaq-accordion h3 {
+				margin: 0;
+				padding:10px;
+				line-height:20px;
+				min-height: 20px;
+				display:block;
+				text-decoration:none;
+				text-transform:uppercase;
+				font-size: 15px;
+				font-weight:bold;
+				border: '.get_option('wfaq_bd_top_color','#f0f0f0').' 1px solid;
+				background: '.( $this->accordion == 'yes' ? get_option('wfaq_head_bkg_color','#ccc') : get_option('wfaq_op_head_bkg_color','#000') ).';
+				color: '.( $this->accordion == 'yes' ? get_option('wfaq_head_txt_color','#000') : get_option('wfaq_op_head_txt_color','#fff') ).';
+			}
+			.wfaq-answer {
+				border: none !important;
+				display: block; 
+				margin: 5px !important;
+				line-height: 25px !important;
+			}				
+			.wfaq-accordion .accordion-open span {
+				display:block;
+				float:right;
+				padding:10px;
+			}				
+			.wfaq-accordion .accordion-open {
+				background: '.get_option('wfaq_op_head_bkg_color','#000').';
+				color: '.get_option('wfaq_op_head_txt_color','#fff').';
+			}
+			.wfaq-accordion .accordion-open span {
+				display:block;
+				float:right;
+				padding:10px;
+			}
+			/*
+			.wfaq-accordion .accordion-open span {
+				background:url(../images/minus.png) center center no-repeat;
+			}
+			.wfaq-accordion .accordion-close span {
+				display:block;
+				float:right;
+				background:url(../images/plus.png) center center no-repeat;
+				padding:10px;
+			}
+			*/
+		');
+
 	} // End enqueue_styles ()
 
 	/**

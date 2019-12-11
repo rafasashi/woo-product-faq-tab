@@ -195,23 +195,22 @@
     }
 </style>
 <div class="landing">
-	<?php if( !$this->parent->license->is_valid() ){ ?>
-		<section class="section-rew section-odd" style="padding-top:0;">
-			<div class="landing-container">
-				<div class="rew-license">
-					<p>
-						Upgrade to the <span class="highlight">premium version</span>
-						of <span class="highlight">WooCommerce Product FAQ Tab</span> to benefit from all features!
-					</p>
-					<a href="<?php echo $this->parent->premium_url; ?>" target="_blank" class="rew-license-button button btn">
-						<span class="highlight">GET LICENSE</span>
-						<span>to the premium version</span>
-					</a>
-				</div>
-			</div>
-		</section>
-	<?php } ?>
 	
+	<section class="section-rew section-odd" style="padding-top:0;">
+		<div class="landing-container">
+			<div class="rew-license">
+				<p>
+					Upgrade to the <span class="highlight">premium version</span>
+					of <span class="highlight">WooCommerce Product FAQ Tab</span> to benefit from all features!
+				</p>
+				<a href="<?php echo $this->parent->premium_url; ?>" target="_blank" class="rew-license-button button btn">
+					<span class="highlight">GET LICENSE</span>
+					<span>to the premium version</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
     <section class="section-even clear" style="background: url(<?php echo $this->parent->assets_url . 'images/'?>01-bg.png?<?php echo time(); ?>) no-repeat #f7f7f7; background-position: 85% 75%">
         <h1>Premium Features</h1>
 		

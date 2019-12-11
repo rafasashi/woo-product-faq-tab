@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Product FAQ Tab
  * Plugin URI: https://code.recuweb.com/download/woocommerce-product-faq-tab/
  * Description: Extends WooCommerce to allow you to display all images attached to a product in a new tab on the single product page.
- * Version: 3.0.7
+ * Version: 3.0.8
  * Author: Rafasashi
  * Author URI: https://code.recuweb.com/about-us/
  * Requires at least: 4.6
@@ -24,20 +24,6 @@
 	*
 	*/
 	if ( get_bloginfo('version') < 3.3 ) return;
-	
-	// This is the secret key for API authentication.
-	if(!defined('RW_SECRET_KEY')){
-		define('RW_SECRET_KEY', '5ad860ff15b435.76265870');
-	}
-
-	// This is the URL where API query request will be sent to.
-	if(!defined('RW_SERVER_URL')){
-		define('RW_SERVER_URL', 'https://code.recuweb.com');
-	}
-	
-	if(!defined('WFAQ_PRODUCT_ID')){
-		define('WFAQ_PRODUCT_ID', '5701');
-	}	
 
 	// Load plugin class files
 	require_once( 'includes/class-woocommerce-product-faq-tab.php' );
@@ -46,7 +32,6 @@
 	// Load plugin libraries
 	require_once( 'includes/lib/class-woocommerce-product-faq-tab-admin-api.php' );
 	require_once( 'includes/lib/class-woocommerce-product-faq-tab-admin-notices.php' );
-	require_once( 'includes/lib/class-woocommerce-product-faq-tab-license.php' );
 	require_once( 'includes/lib/class-woocommerce-product-faq-tab-post-type.php' );
 	require_once( 'includes/lib/class-woocommerce-product-faq-tab-taxonomy.php' );		
 	
@@ -75,9 +60,14 @@
 
 	// Checks if the WooCommerce plugins is installed and active.
 	
-	if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))){
+	$plugins = apply_filters('active_plugins', get_option('active_plugins'));
+	
+	if(in_array('woocommerce/woocommerce.php', $plugins)){
 		
-		WooCommerce_Product_FAQ_Tab();
+		if(!in_array('woo-product-faq-tab-premium/woocommerce-product-faq-tab-premium.php', $plugins)){
+		
+			WooCommerce_Product_FAQ_Tab();
+		}
 	}
 	else{
 		
