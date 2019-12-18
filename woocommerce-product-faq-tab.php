@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Product FAQ Tab
  * Plugin URI: https://code.recuweb.com/download/woocommerce-product-faq-tab/
  * Description: Extends WooCommerce to allow you to display all images attached to a product in a new tab on the single product page.
- * Version: 3.0.8
+ * Version: 3.0.9
  * Author: Rafasashi
  * Author URI: https://code.recuweb.com/about-us/
  * Requires at least: 4.6
@@ -25,39 +25,6 @@
 	*/
 	if ( get_bloginfo('version') < 3.3 ) return;
 
-	// Load plugin class files
-	require_once( 'includes/class-woocommerce-product-faq-tab.php' );
-	require_once( 'includes/class-woocommerce-product-faq-tab-settings.php' );
-	
-	// Load plugin libraries
-	require_once( 'includes/lib/class-woocommerce-product-faq-tab-admin-api.php' );
-	require_once( 'includes/lib/class-woocommerce-product-faq-tab-admin-notices.php' );
-	require_once( 'includes/lib/class-woocommerce-product-faq-tab-post-type.php' );
-	require_once( 'includes/lib/class-woocommerce-product-faq-tab-taxonomy.php' );		
-	
-	/**
-	 * Returns the main instance of WooCommerce_Product_FAQ_Tab to prevent the need to use globals.
-	 *
-	 * @since  1.0.0
-	 * @return object WooCommerce_Product_FAQ_Tab
-	 */
-	function WooCommerce_Product_FAQ_Tab() {
-				
-		$instance = WooCommerce_Product_FAQ_Tab::instance( __FILE__, '1.0.6' );	
-		
-		if ( is_null( $instance->notices ) ) {
-			
-			$instance->notices = WooCommerce_Product_FAQ_Tab_Admin_Notices::instance( $instance );
-		}
-		
-		if ( is_null( $instance->settings ) ) {
-			
-			$instance->settings = WooCommerce_Product_FAQ_Tab_Settings::instance( $instance );
-		}
-
-		return $instance;
-	}	
-
 	// Checks if the WooCommerce plugins is installed and active.
 	
 	$plugins = apply_filters('active_plugins', get_option('active_plugins'));
@@ -66,6 +33,39 @@
 		
 		if(!in_array('woo-product-faq-tab-premium/woocommerce-product-faq-tab-premium.php', $plugins)){
 		
+			// Load plugin class files
+			require_once( 'includes/class-woocommerce-product-faq-tab.php' );
+			require_once( 'includes/class-woocommerce-product-faq-tab-settings.php' );
+			
+			// Load plugin libraries
+			require_once( 'includes/lib/class-woocommerce-product-faq-tab-admin-api.php' );
+			require_once( 'includes/lib/class-woocommerce-product-faq-tab-admin-notices.php' );
+			require_once( 'includes/lib/class-woocommerce-product-faq-tab-post-type.php' );
+			require_once( 'includes/lib/class-woocommerce-product-faq-tab-taxonomy.php' );		
+			
+			/**
+			 * Returns the main instance of WooCommerce_Product_FAQ_Tab to prevent the need to use globals.
+			 *
+			 * @since  1.0.0
+			 * @return object WooCommerce_Product_FAQ_Tab
+			 */
+			function WooCommerce_Product_FAQ_Tab() {
+						
+				$instance = WooCommerce_Product_FAQ_Tab::instance( __FILE__, '1.0.6' );	
+				
+				if ( is_null( $instance->notices ) ) {
+					
+					$instance->notices = WooCommerce_Product_FAQ_Tab_Admin_Notices::instance( $instance );
+				}
+				
+				if ( is_null( $instance->settings ) ) {
+					
+					$instance->settings = WooCommerce_Product_FAQ_Tab_Settings::instance( $instance );
+				}
+
+				return $instance;
+			}	
+			
 			WooCommerce_Product_FAQ_Tab();
 		}
 	}
