@@ -4,7 +4,7 @@ Tags: ecommerce, e-commerce, woocommerce, FAQ, questions, answers, QnA, product 
 Donate link: https://code.recuweb.com/download/woocommerce-product-faq-tab/
 Requires at least: 4.6
 Tested up to: 5.3
-Stable tag: 3.0.8
+Stable tag: 3.0.9
 License: GPLv3
 License URI: https://code.recuweb.com/product-licenses/
 
@@ -29,6 +29,7 @@ Extends WooCommerce to allow you to display Frequently Asked Questions (FAQ) abo
 
 = Premium Features =
 
+- JSON LD - FAQPage structured data to be eligible for display as a rich result in Google search
 - REMOVE ADS - Remove the "Code Market" premium panel in the admin sidebar
 
 More information about [WooCommerce Product FAQ Tab](https://code.recuweb.com/download/woocommerce-product-faq-tab/)
