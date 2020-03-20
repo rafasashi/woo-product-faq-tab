@@ -526,15 +526,19 @@ class WooCommerce_Product_FAQ_Tab {
 				echo '<a href="#ask-a-question" class="button wfaq-button" style="float:right;margin:0px 0 20px 0px;">Ask question</a>';
 			}
 		
-			echo '<div id="wfaq_items" class="wfaq-accordion">';
+			echo '<div id="wfaq_items" class="accordion-container wfaq-accordion">';
 
 				$i=1;
 				
 				foreach( $faqs as $question => $answer ){
 					
-					echo '<h3 id="wfaq-section-'.$i.'" class="wfaq-question">' . $question . '<span></span></h3>';
+					echo '<div class="accordion-section' . ( $i==1 ? ' open' : '' ) . '">';
+					
+						echo '<h3 id="wfaq-section-'.$i.'" class="accordion-section-title wfaq-question" aria-expanded="' . ( $i==1 ? 'true' : 'false' ) . '">' . $question . '<span></span></h3>';
 				
-					echo '<div class="wfaq-answer">' . $answer . '</div>';
+						echo '<div class="accordion-section-content wfaq-answer">' . $answer . '</div>';
+					
+					echo'</div>';
 					
 					++$i;
 				}
@@ -644,12 +648,23 @@ class WooCommerce_Product_FAQ_Tab {
 		wp_register_style( $this->_token . '-custom-style', false );
 		wp_enqueue_style( $this->_token . '-custom-style' );
 		wp_add_inline_style( $this->_token . '-custom-style', '
-			
+
+			.accordion-section .wfaq-answer{
+				
+				display:' . ( $this->accordion == 'yes' ? 'none' : 'block' ) . ';
+			}
+
+			.accordion-section.open .wfaq-answer{
+				
+				display:block;
+			}
+
 			.wfaq-accordion {
 				display:inline-block;
 				width:100%;
 			}
 			.wfaq-accordion h3 {
+				cursor:' . ( $this->accordion == 'yes' ? 'pointer' : 'auto' ) . ';
 				margin: 0;
 				padding:10px;
 				line-height:20px;
@@ -707,33 +722,9 @@ class WooCommerce_Product_FAQ_Tab {
 	public function enqueue_scripts () {
 		
 		if( $this->accordion == 'yes' ){
-		
-			wp_register_script( 'rew-jquery-accordion', esc_url( $this->assets_url ) . 'js/jquery.accordion.js', array( 'jquery' ), $this->_version );
-			wp_enqueue_script( 'rew-jquery-accordion' );			
 			
-			wp_register_script($this->_token . '-accordion', '', array('jquery','rew-jquery-accordion') );
-			
-			wp_enqueue_script($this->_token . '-accordion');
-		
-			wp_add_inline_script($this->_token . '-accordion', '
-			
-				;(function($){
-
-					$(document).ready(function(){
-						
-						if( $(\'.wfaq-accordion\').length ){
-					
-							$(\'.wfaq-accordion\').accordion({
-								
-									defaultOpen: \'wfaq-sections-1\',
-									heightStyle: \'content\'
-								});
-						}
-					});
-						
-				})(jQuery);
-			
-			');
+			wp_register_script('rew-jquery-accordion', esc_url( $this->assets_url ) . 'js/jquery.accordion.js', array( 'jquery' ), $this->_version );
+			wp_enqueue_script('rew-jquery-accordion' );
 		}
 		
 	} // End enqueue_scripts ()
