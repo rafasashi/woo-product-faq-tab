@@ -156,7 +156,28 @@ class WooCommerce_Product_FAQ_Tab {
 		load_plugin_textdomain('wc_faq', false, dirname(plugin_basename(__FILE__)).'/lang/');
 		
 		add_action('woocommerce_init', array($this, 'init'));
-		
+			
+		add_filter('woocommerce_get_sections_products',function($sections){
+			
+			$sections['rew-tabs'] = __( 'Tabs', 'woocommerce' );
+			
+			return $sections;
+			
+		},10,1);
+			
+		add_filter('woocommerce_product_settings', function( $settings ){
+			
+			global $current_section;
+
+			if( $current_section == 'rew-tabs' ){
+				
+				return array();
+			}
+			
+			return $settings;
+			
+		},9999999999);
+			
 		$this->woo_settings = array(
 			
 			array(
@@ -266,8 +287,8 @@ class WooCommerce_Product_FAQ_Tab {
 			
 			// Settings
 			
-			add_action('woocommerce_settings_catalog_options_after', array($this, 'faq_admin_settings'));
-			add_action('woocommerce_update_options', array($this, 'save_faq_admin_settings'));			
+			add_action('woocommerce_get_settings_products', array($this, 'faq_admin_settings'),10,2);
+			add_action('woocommerce_update_options_products_rew-tabs', array($this, 'save_faq_admin_settings'));			
 			
 			// Product options
 			
@@ -364,11 +385,14 @@ class WooCommerce_Product_FAQ_Tab {
 	
 	// Adds a few settings to control the images in the tab.
 	
-	function faq_admin_settings(){
+	function faq_admin_settings( $settings, $current_section ){
 		
-		global $settings;
-
-		woocommerce_admin_fields($this->woo_settings);
+		if( $current_section == 'rew-tabs' ){
+			
+			return array_merge($settings,$this->woo_settings);
+		}
+		
+		return $settings;
 	}
 
 	function save_faq_admin_settings(){
