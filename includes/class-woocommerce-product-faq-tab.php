@@ -116,7 +116,7 @@ class WooCommerce_Product_FAQ_Tab {
 		$this->dir 			= dirname( $this->file );
 		$this->views   		= trailingslashit( $this->dir ) . 'views';
 		$this->assets_dir 	= trailingslashit( $this->dir ) . 'assets';
-		$this->assets_url 	= esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
+		$this->assets_url 	= home_url( trailingslashit( str_replace( ABSPATH, '', $this->dir ))  . 'assets/' );
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
@@ -304,9 +304,8 @@ class WooCommerce_Product_FAQ_Tab {
 		
 			}
 
-			add_action( 'woocommerce_process_product_meta_simple', array($this, 'save_faq_option_fields')  );
-			add_action( 'woocommerce_process_product_meta_variable', array($this, 'save_faq_option_fields')  );
-
+			add_action( 'save_post_product', array($this, 'save_faq_option_fields')  );
+			
 			//frontend
 			
 			add_filter('woocommerce_product_tabs', array($this, 'faqs'));
