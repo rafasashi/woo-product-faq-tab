@@ -3,8 +3,8 @@ Contributors: rafasashi
 Tags: ecommerce, e-commerce, woocommerce, FAQ, questions, answers, QnA, product tab
 Donate link: https://code.recuweb.com/download/woocommerce-product-faq-tab/
 Requires at least: 4.6
-Tested up to: 5.4
-Stable tag: 3.1.1
+Tested up to: 5.8
+Stable tag: 3.1.3
 License: GPLv3
 License URI: https://code.recuweb.com/product-licenses/
 

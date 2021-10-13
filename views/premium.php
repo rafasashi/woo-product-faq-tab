@@ -313,24 +313,20 @@
 			</div>
         </div>
     </section>
-	
-	<?php if( !$this->parent->license->is_valid() ){ ?>
-	
-		<section class="section-rew section-odd">
-			<div class="landing-container">
-				<div class="rew-license">
-					<p>
-						Upgrade to the <span class="highlight">premium version</span>
-						of <span class="highlight">WooCommerce Product FAQ Tab</span> to benefit from all features!
-					</p>
-					<a href="<?php echo $this->parent->premium_url; ?>" target="_blank" class="rew-license-button button btn">
-						<span class="highlight">GET LICENSE</span>
-						<span>to the premium version</span>
-					</a>
-				</div>
+
+	<section class="section-rew section-odd">
+		<div class="landing-container">
+			<div class="rew-license">
+				<p>
+					Upgrade to the <span class="highlight">premium version</span>
+					of <span class="highlight">WooCommerce Product FAQ Tab</span> to benefit from all features!
+				</p>
+				<a href="<?php echo $this->parent->premium_url; ?>" target="_blank" class="rew-license-button button btn">
+					<span class="highlight">GET LICENSE</span>
+					<span>to the premium version</span>
+				</a>
 			</div>
-		</section>
+		</div>
+	</section>
 		
-	<?php } ?>
-	
 </div>
