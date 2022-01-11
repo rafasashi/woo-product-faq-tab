@@ -116,7 +116,7 @@ class WooCommerce_Product_FAQ_Tab {
 		$this->dir 			= dirname( $this->file );
 		$this->views   		= trailingslashit( $this->dir ) . 'views';
 		$this->assets_dir 	= trailingslashit( $this->dir ) . 'assets';
-		$this->assets_url 	= home_url( trailingslashit( str_replace( ABSPATH, '', $this->dir ))  . 'assets/' );
+		$this->assets_url 	= trailingslashit( plugin_dir_url( $this->file ) . 'assets' );
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
@@ -451,6 +451,16 @@ class WooCommerce_Product_FAQ_Tab {
 	function save_faq_option_fields( $post_id ) {
 		
 		if( !empty($_POST['wfaq_items']) && is_array($_POST['wfaq_items']) && isset($_POST['wfaq_items']['question']) && isset($_POST['wfaq_items']['answer']) && count($_POST['wfaq_items']['question']) == count($_POST['wfaq_items']['answer']) ){
+			
+			$items = $_POST['wfaq_items'];
+			
+			if( !empty($items['answer']) ){
+				
+				foreach( $items['answer'] as $i => $answer ){
+					
+					$items['answer'][$i] = str_replace('src=\"../','src=\"/',$answer);
+				}
+			}
 			
 			update_post_meta( $post_id, 'wfaq_items', $_POST['wfaq_items'] );
 		}
