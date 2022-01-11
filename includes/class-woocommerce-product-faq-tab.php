@@ -462,7 +462,7 @@ class WooCommerce_Product_FAQ_Tab {
 				}
 			}
 			
-			update_post_meta( $post_id, 'wfaq_items', $_POST['wfaq_items'] );
+			update_post_meta( $post_id, 'wfaq_items', $items );
 		}
 	}
 	
