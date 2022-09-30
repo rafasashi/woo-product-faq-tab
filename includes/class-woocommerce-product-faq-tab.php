@@ -354,18 +354,19 @@ class WooCommerce_Product_FAQ_Tab {
 			
 			$subject = 'Question about: ' . $title;
 			
-			$body  = $subject .PHP_EOL ;
-			$body .= 'From: (' . $email . ')' .PHP_EOL ;
+			$body = 'From: (' . $email . ')' .PHP_EOL ;
 			$body .= '__________________' . PHP_EOL . PHP_EOL ;
 			$body .= $question . PHP_EOL ;
-			
-			$headers 	= array(
-				
-				'Content-Type: text/html; charset=UTF-8',
-				'Reply-To: '.$email.' <'.$email.'>',
-			);
-			 
-			wp_mail( $to, $subject, nl2br($body), $headers );
+
+			$mailer = WC()->mailer();
+
+			$wrapped_message = $mailer->wrap_message($subject, $body);
+
+			$wc_email = new WC_Email;
+
+			$html_message = $wc_email->style_inline($wrapped_message);
+
+			$mailer->send( $to, $subject, $html_message, HTML_EMAIL_HEADERS );
 			
 			wc_add_notice(__('Thanks for asking, we will answer you soon!', 'wc_faq'),'success');
 
