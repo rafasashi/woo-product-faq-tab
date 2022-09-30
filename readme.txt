@@ -3,8 +3,8 @@ Contributors: rafasashi
 Tags: ecommerce, e-commerce, woocommerce, FAQ, questions, answers, QnA, product tab
 Donate link: https://code.recuweb.com/download/woocommerce-product-faq-tab/
 Requires at least: 4.6
-Tested up to: 5.8
-Stable tag: 3.1.4
+Tested up to: 6.0
+Stable tag: 3.1.5
 License: GPLv3
 License URI: https://code.recuweb.com/product-licenses/
 
@@ -14,6 +14,10 @@ Allows you to display Frequently Asked Questions (FAQ) about the product in a ne
 
 Extends WooCommerce to allow you to display Frequently Asked Questions (FAQ) about the product in a new tab on the single product page.
 
+= Support Forum =
+
+For quicker support on this plugin go to: [https://code.recuweb.com/support/forum/wordpress-plugins/woocommerce-product-faq-tab/](https://code.recuweb.com/support/forum/wordpress-plugins/woocommerce-product-faq-tab/)
+
 = Free Features =
 
 - ADD FAQ TAB – add a new tab to the product page to display the Frequently Asked Questions about the product and their Answers. 
@@ -21,8 +25,6 @@ Extends WooCommerce to allow you to display Frequently Asked Questions (FAQ) abo
 - RENAME THE TAB – Don’t keep the tab name “FAQs” and rename the tab to anything you want like “Q&A” or “Support”.
 - FAQ ACCORDION – Show the questions and answers in a dynamic accordion.  It works on all modern browsers.
 - QUESTION FORM – Enable the question form to collect new questions about the product from customers.
-- HTML CONTENT – Replace the textarea editor by a WYSIWYG editor in the backend and add HTML content in you answers.
-- SORTABLE QUESTIONS – Rearrange the questions order using the drag and drop feature from the backend.
 - TAB STYLING – Change the text and background colors of the blocks.
 - TAB POSITION – Change the position of the Tab name in the frontend.
 - SHOW EMPTY – Show empty Tab, recommended if the question form is enabled.
@@ -31,6 +33,9 @@ Extends WooCommerce to allow you to display Frequently Asked Questions (FAQ) abo
 
 - JSON LD - FAQPage structured data to be eligible for display as a rich result in Google search
 - REMOVE ADS - Remove the "Code Market" premium panel in the admin sidebar
+- RECIPIENT EMAIL - Change the recipient email address when forwarding the customer questions
+- HTML CONTENT – Replace the textarea editor by a WYSIWYG editor in the backend and add HTML content in you answers.
+- SORTABLE QUESTIONS – Rearrange the questions order using the drag and drop feature from the backend.
 
 More information about [WooCommerce Product FAQ Tab](https://code.recuweb.com/download/woocommerce-product-faq-tab/)
 

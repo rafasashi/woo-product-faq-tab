@@ -263,7 +263,7 @@ class WooCommerce_Product_FAQ_Tab_Settings {
 					
 					//do nothing
 				}
-				elseif( count($this->settings) > 1 ){
+				elseif( is_array($this->settings) && count($this->settings) > 1 ){
 
 					$html .= '<p class="submit">' . "\n";
 						$html .= '<input type="hidden" name="tab" value="' . esc_attr( $tab ) . '" />' . "\n";
